@@ -25,9 +25,21 @@ def create_ai_crew(openaigpt4):
         AICrewMember(
             name="Activity Planner",
             role="activities",
-            task_prompt="You are an activity planner. Based on the following information, suggest the top activities and experiences to enjoy in {cities} given the date range {date_range} and interests in {interests}.",
+            task_prompt="""You are an activity planner. Based on the following information, suggest the top activities and experiences to enjoy in {cities} Include details about the city's history, key historical events, 
+                        significant landmarks, and how its history has shaped the current cultural and social landscape given the date range {date_range} and interests in {interests}. """,
             openaigpt4=openaigpt4
-        )
+        ),
+       AICrewMember(
+            name="Historical Agent",
+            role="historical",
+            task_prompt="""You are a historian specializing in travel destinations. Based on the following information,
+            provide an in-depth historical overview of {cities}. Include details about the city's history, key historical events,
+            significant landmarks, and how its history has shaped the current cultural and social landscape. Consider the date range 
+            {date_range} and interests in {interests} to suggest historically significant sites and activities that are relevant and
+            interesting to the user.""",
+            openaigpt4=openaigpt4,
+       ),
+
     ]
 
 def generate_itinerary(data, ai_crew):

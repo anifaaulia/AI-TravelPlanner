@@ -4,15 +4,37 @@ from tools import load_api_key
 
 
 def main():
-    st.title("AI Travel Planner")
+   
+    st.set_page_config(
+        page_title="Travel Planner-Anifa",
+        page_icon="✈️",
+        layout="wide",
+        initial_sidebar_state="expanded",
+    )
+
+    st.markdown("""
+        <style>
+
+        h1 {
+            color: #4b4b4b;
+            text-align: center;
+            padding: 15px 0;
+        }
+        
+        </style>
+        """, unsafe_allow_html=True)
+    
+    st.title("    ✈️ Travel Planner    ")
+
 
     # Mengajukan pertanyaan kepada pengguna
-    origin = st.text_input("From where will you be traveling from?")
-    cities = st.text_input("What are the cities options you are interested in visiting? (separate by commas)")
-    date_range = st.text_input("What is the date range you are interested in traveling?")
-    interests = st.text_input("What are some of your high level interests and hobbies?")
-
+    origin = st.text_input("🏠 From where will you be traveling from?")
+    cities = st.text_input("🛬 What are the cities options you are interested in visiting? (separate by commas)")
+    date_range = st.text_input("📅 What is the date range you are interested in traveling?")
+    interests = st.text_input("🎨 What are some of your high level interests and hobbies?")
+   
     if st.button("Generate Itinerary"):
+       
         #Load API key from environtment
         api_key = load_api_key()
         if not api_key:
